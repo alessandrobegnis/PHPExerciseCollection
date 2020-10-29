@@ -1,7 +1,7 @@
 <html>
 
 <body>
-    <form action="info.php" method="post">
+    <form action="welcome.php" method="post">
         Name: <input type="text" name="name" />
         <br /><br />
         Last Name: <input type="text" name="lastname" />
