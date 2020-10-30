@@ -16,7 +16,7 @@
             fwrite($handler, $_POST["testoFile"]);
         }
 
-        ?> 
+        ?>
 
     </form>
 

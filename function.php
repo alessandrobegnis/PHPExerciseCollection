@@ -7,4 +7,3 @@ function debug_to_console($data)
     $output = implode(',', $output);
     echo "<script>console.log('Debug Objects: " . $output . "'); </script>";
 }
-?>

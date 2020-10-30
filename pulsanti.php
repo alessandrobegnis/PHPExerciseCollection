@@ -1,14 +1,17 @@
 <html>
+
 <body style="text-align: center">
 	<h1> Esercizio script php integrato </h1>
 	<br /><br />
 	<h3> Quale pulsante ho premuto? </h3>
 	<br /><br />
 
-	<?php 
-
-	echo "Pulsante selezionato = " . $_POST["button"];
+	<?php
+    if(isset($_POST["button"])){
+		echo "Pulsante selezionato = " . $_POST["button"];
+	}
 	
+
 	?>
 	<br /><br />
 
@@ -20,4 +23,5 @@
 	</form>
 
 </body>
+
 </html>
