@@ -2,26 +2,20 @@
 
 <body>
 
-    <form action="/scriviFile.php" method="post">
+    <form action="scriviFile.php" method="post">
 
-        <textarea name="text" rows="5" cols="40"><?php echo $contenuto; ?></textarea>
+        <textarea name="testoFile" rows="5" cols="40"></textarea>
         <input type="submit">
 
         <?php
-        $nFile = "ciao.txt";
-        $handler = fopen($nFile, "a+") or  die("File not exists");
-        $fSize = filesize($nFile);
 
-        if (isset($_POST["text"])) {
-            $s = $_POST["text"];
-            fwrite($handler, $s);
+        $file = "ciao.txt";
+        $handler = fopen($file, "a+") or  die("File not exists");
+
+        if (isset($_POST["testoFile"])) {
+            fwrite($handler, $_POST["testoFile"]);
         }
 
-        if ($fSize != 0) {
-            $contenuto = fread($handler, $fSize);
-        } else {
-            $contenuto = "";
-        }
         ?> 
 
     </form>
