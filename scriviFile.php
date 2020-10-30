@@ -14,6 +14,7 @@
 
         if (isset($_POST["testoFile"])) {
             fwrite($handler, $_POST["testoFile"]);
+            echo "<br/> File aggiornato ";  
         }
 
         ?>
