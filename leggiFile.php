@@ -3,7 +3,7 @@
 echo "<h1>Testo del File </h1>";
 $myFile = "ciao.txt";
 if (!file_exists($myFile)) {
-
+	
 	echo "File non trovato <br/><br/>";
 } else if (!$file = fopen($myFile, "r")) {
 
