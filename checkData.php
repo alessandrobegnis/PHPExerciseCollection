@@ -34,6 +34,7 @@ echo "visite: " . $_COOKIE["sessione"] . "<br/>";
                     }
                     if ($nomeUtente == $utenteLoggato) {
                         $voti = substr($linea, strpos($linea, ":") + 1, strlen($linea));
+                        $arrayvoti = explode(';', $voti);
                         break;
                     }
                 }
@@ -44,6 +45,16 @@ echo "visite: " . $_COOKIE["sessione"] . "<br/>";
             if (isset($_COOKIE["user"])) {
                 echo "<div class=\"container\"><h2>Benvenuto nella tua area dedicata, </h2>";
                 echo "<h1 style=\"color:green\">" . $_COOKIE["user"] . "</h1>";
+                echo "<table><tr><th>Voto</th></tr>";
+                foreach($arrayvoti as $voto){
+                    echo "<tr>";
+                    echo "<td>";
+                    echo $voto;
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                
+                echo "</table>";
                 echo "<h1 style=\"color:orange\">" . $voti . "</h2>";
                 echo "</div>";
             } else {
