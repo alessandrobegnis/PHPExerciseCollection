@@ -19,9 +19,32 @@ echo "visite: " . $_COOKIE["sessione"] . "<br/>";
     <form>
         <div class="container">
             <?php
+            $path = "voti.txt";
+            $voti;
+            if ($file = fopen($path, "r")) {
+                while (!feof($file)) {
+
+                    $linea = fgets($file);
+                    $nomeUtente = substr($linea, 0, strpos($linea, ":"));
+                    $utenteLoggato;
+                    if (isset($_COOKIE["user"])) {
+                        $utenteLoggato = $_COOKIE["user"];
+                    } else {
+                        $utenteLoggato = $_POST["username"];
+                    }
+                    if ($nomeUtente == $utenteLoggato) {
+                        $voti = substr($linea, strpos($linea, ":") + 1, strlen($linea));
+                        break;
+                    }
+                }
+                fclose($file);
+            } else {
+                echo ("Impossibile aprire il file!");
+            }
             if (isset($_COOKIE["user"])) {
                 echo "<div class=\"container\"><h2>Benvenuto nella tua area dedicata, </h2>";
                 echo "<h1 style=\"color:green\">" . $_COOKIE["user"] . "</h1>";
+                echo "<h1 style=\"color:orange\">" . $voti . "</h2>";
                 echo "</div>";
             } else {
                 if (isset($_CREDENZIALI[$_POST["username"]])) {
@@ -29,6 +52,7 @@ echo "visite: " . $_COOKIE["sessione"] . "<br/>";
                         setcookie("user", $_POST["username"], time() + (60 * 60));
                         echo "<div class=\"container\"><h2>Benvenuto nella tua area dedicata, </h2>";
                         echo "<h1 style=\"color:green\">" . $_POST["username"] . "</h1>";
+                        echo "<h1 style=\"color:orange\">" . $voti . "</h2>";
                         echo "</div>";
                     } else {
                         echo "<img src=\"https://i0.wp.com/vincenttechblog.com/wp-content/uploads/2018/02/lock-pc-wrong-password.jpg?ssl=1\" class =\"avatar\">";
@@ -49,4 +73,3 @@ echo "visite: " . $_COOKIE["sessione"] . "<br/>";
 </body>
 
 </html>
- 
