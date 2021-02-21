@@ -1,5 +1,10 @@
 <!-- POPOLAZIONE ARRAY -->
 <?php
+setcookie("contatoreLogin", $contatoreLogin+1, time()+600);
+$tentativi = intval($_COOKIE["contatoreLogin"]); 
+if($tentativi > 3){
+   die("Troppi tentativi");
+}
 $path = "scriptCredenziali.php";
 include($path);
 echo "visite: " . $_COOKIE["sessione"] . "<br/>";
